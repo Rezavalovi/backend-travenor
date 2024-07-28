@@ -1,0 +1,49 @@
+[
+	{
+		"id": 1,
+		"name": "Niladri Reservoir",
+		"location": "Tekergat, Sunamgonj",
+		"rating": 4.7,
+		"price": 50.0,
+		"description": "Niladri is famous for its breathtaking natural beauty and crystal-clear waters.",
+		"imageUrl": "https://example.com/images/niladri-reservoir.jpg",
+		"createdAt": "2024-07-28T12:00:00Z",
+		"updatedAt": "2024-07-28T12:00:00Z"
+	},
+	{
+		"id": 2,
+		"name": "Darmang Lake",
+		"location": "Dowal, Sunamgonj",
+		"rating": 4.5,
+		"price": 45.0,
+		"description": "Darmang Lake is a serene place perfect for a quiet retreat.",
+		"imageUrl": "https://example.com/images/darmang-lake.jpg"
+	},
+	{
+		"id": 3,
+		"name": "Adiring Villa Resort",
+		"location": "Bogor, Indonesia",
+		"rating": 4.6,
+		"price": 70.0,
+		"description": "A luxurious villa resort with beautiful views and excellent amenities.",
+		"imageUrl": "https://example.com/images/adiring-villa-resort.jpg"
+	},
+	{
+		"id": 4,
+		"name": "Kachura Resort",
+		"location": "Skardu, Pakistan",
+		"rating": 4.8,
+		"price": 60.0,
+		"description": "A popular resort with stunning mountain views and outdoor activities.",
+		"imageUrl": "https://example.com/images/kachura-resort.jpg"
+	},
+	{
+		"id": 5,
+		"name": "Shandur Resort",
+		"location": "Chitral, Pakistan",
+		"rating": 4.9,
+		"price": 55.0,
+		"description": "A beautiful resort located at the 'Roof of the World' offering unique experiences.",
+		"imageUrl": "https://example.com/images/shandur-resort.jpg"
+	}
+]
