@@ -5,8 +5,8 @@ const nodemailer = require("nodemailer");
 
 const fs = require("fs/promises");
 
-// const { OAuth2Client } = require("google-auth-library");
-// const client = new OAuth2Client();
+const { OAuth2Client } = require("google-auth-library");
+const client = new OAuth2Client();
 
 class UserController {
   static async register(req, res, next) {
@@ -27,11 +27,11 @@ class UserController {
       async function main() {
         // send mail with defined transport object
         const info = await transporter.sendMail({
-          from: '"Reza Valovi" <foo@example.com>', // sender address
-          to: createdUser.email, // list of receivers
-          subject: "Hello ✔", // Subject line
-          text: "You are succes registed", // plain text body
-          html: "<b>You are succes registed</b>", // html body
+          from: '"Reza Valovi" <foo@example.com>',
+          to: createdUser.email,
+          subject: "Hello ✔",
+          text: "You are succes registed",
+          html: "<b>You are succes registed</b>",
         });
         console.log("Message sent: %s", info.messageId);
       }
@@ -87,39 +87,63 @@ class UserController {
     }
   }
 
-  //   static async googleLogin(req, res, next) {
-  //     try {
-  //       const { google_token } = req.body;
-  //       console.log(google_token);
+  static async googleLogin(req, res, next) {
+    try {
+      const { google_token } = req.body;
+      // console.log(google_token);
 
-  //       const ticket = await client.verifyIdToken({
-  //         idToken: google_token,
-  //         audience: process.env.GOOGLE_CLIENT_ID,
-  //       });
-  //       const payload = ticket.getPayload();
+      const ticket = await client.verifyIdToken({
+        idToken: google_token,
+        audience: process.env.GOOGLE_CLIENT_ID,
+      });
+      const payload = ticket.getPayload();
 
-  //       const [user, created] = await User.findOrCreate({
-  //         where: {
-  //           email: payload.email,
-  //         },
-  //         defaults: {
-  //           username: payload.name,
-  //           email: payload.email,
-  //           password: Math.random().toString(),
-  //         },
-  //       });
+      const [user, created] = await User.findOrCreate({
+        where: {
+          email: payload.email,
+        },
+        defaults: {
+          username: payload.name,
+          email: payload.email,
+          password: Math.random().toString(),
+        },
+      });
 
-  //       const access_token = signToken({ id: user.id });
+      const access_token = signToken({ id: user.id });
 
-  //       res.status(created ? 201 : 200).json({
-  //         message: `User ${user.email} found`,
-  //         access_token: access_token,
-  //         id: user.id,
-  //       });
-  //     } catch (error) {
-  //       next(error);
-  //     }
-  //   }
+      res.status(created ? 201 : 200).json({
+        message: `User ${user.email} found`,
+        access_token: access_token,
+        id: user.id,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async facebookLogin(req, res, next) {
+    try {
+      res.redirect("/");
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async twitterLogin(req, res, next) {
+    try {
+      res.redirect("/");
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async instagramLogin(req, res, next) {
+    try {
+      res.redirect("/");
+    } catch (error) {
+      next(error);
+    }
+  }
 
   static async getUserInfo(req, res, next) {
     try {
@@ -165,9 +189,11 @@ class UserController {
       }
 
       if (user.profileImg) {
-        await fs.unlink(user.profileImg).catch((err) =>
-          console.error(`Failed to delete old profile image: ${err}`)
-        );
+        await fs
+          .unlink(user.profileImg)
+          .catch((err) =>
+            console.error(`Failed to delete old profile image: ${err}`),
+          );
       }
 
       user.profileImg = imagePath;
@@ -183,7 +209,6 @@ class UserController {
       next(error);
     }
   }
-
 }
 
 module.exports = UserController;

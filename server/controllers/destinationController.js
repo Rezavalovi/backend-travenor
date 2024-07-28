@@ -90,7 +90,6 @@ class DestinationController {
   static async deleteDestination(req, res, next) {
     try {
       const { id } = req.params;
-      // await Favorite.findByPk(id)
       await Destination.destroy({
         where: {
           id: id,
