@@ -224,7 +224,7 @@ Response (200 - OK)
 }
 ```
 
-## 3. GET /users
+## 4. GET /users
 
 Get all user info
 
@@ -235,14 +235,6 @@ Request:
 ```json
 {
   "Authorization": "Bearer <string token>"
-}
-```
-
-- params:
-
-```json
-{
-  "UserId": "integer"
 }
 ```
 
@@ -269,7 +261,7 @@ Response (200 - OK)
 ]
 ```
 
-## 4. PUT /users/profile/image
+## 5. PUT /users/profile/image
 
 Update user profile image
 
@@ -340,7 +332,7 @@ OR
 
 ```
 
-## 5. GET /destination
+## 6. GET /destination
 
 Get all destination
 
@@ -414,7 +406,7 @@ Response (401- Unauthorized)
 }
 ```
 
-## 6. GET /destination/:id
+## 7. GET /destination/:id
 
 Get destination by id
 
@@ -454,7 +446,7 @@ Response (401- Unauthorized)
 }
 ```
 
-## 7. POST /destination
+## 8. POST /destination
 
 add or create destination
 
@@ -508,7 +500,7 @@ Response (401- Unauthorized)
 }
 ```
 
-## 8. PUT /destination/:id
+## 9. PUT /destination/:id
 
 update destination by id
 
@@ -568,7 +560,7 @@ Response (401- Unauthorized)
 ```
 
 
-## 9. Delete /destination/:id
+## 10. Delete /destination/:id
 
 - Delete destination 
 
@@ -606,7 +598,7 @@ Response (404 - Not Found)
 }
 ```
 
-## 10. POST /favorite
+## 11. POST /favorite
 
 - headers:
 
@@ -667,7 +659,7 @@ Response (500 - Internal Server Error)
 }
 ```
 
-## 11. DELETE /favorite/:id
+## 12. DELETE /favorite/:id
 
 - headers:
 
