@@ -78,7 +78,7 @@ class DestinationController {
           );
           let data = await Destination.findByPk(id)
           if (!data) {
-              throw { name: "NotFound" }
+              throw { name: "Data NotFound" }
           }
 
           res.status(200).json({
@@ -86,7 +86,7 @@ class DestinationController {
             data
           });
       } catch (error) {
-          console.log(error.message);
+          // console.log(error.message);
           next(error);
       }
   }

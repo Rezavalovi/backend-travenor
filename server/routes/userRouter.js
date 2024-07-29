@@ -7,7 +7,7 @@ const upload = require("../middlewares/uploadImage");
 const userRouter = express.Router();
 const uploadMiddleware = upload();
 
-userRouter.get("/", userController.getUserInfo);
+userRouter.get("/", authentication, userController.getUserInfo);
 userRouter.post("/register", userController.register);
 userRouter.post("/login", userController.login);
 userRouter.post("/goggle-login", userController.googleLogin)
