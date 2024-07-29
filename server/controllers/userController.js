@@ -11,7 +11,24 @@ const client = new OAuth2Client();
 class UserController {
   static async register(req, res, next) {
     try {
-      let { username, email, password, phoneNumber, address } = req.body;
+      let { username, email, password } = req.body;
+
+      // validation email domain
+      const validDomains = ["gmail.com", "hotmail.com", "yahoo.com"];
+      const domain = email.split("@")[1];
+      if (!validDomains.includes(domain)) {
+        return res.status(400).json({ message: "Invalid email domain" });
+      }
+
+      // Validation password
+      if (password.length < 8 || password.length > 64) {
+        return res
+          .status(400)
+          .json({
+            message: "Password must be between 8 and 64 characters long",
+          });
+      }
+ 
       const createdUser = await User.create({
         username,
         email,
@@ -61,6 +78,7 @@ class UserController {
           message: "Password is required",
         };
       }
+      
       const user = await User.findOne({
         where: {
           email: email,
