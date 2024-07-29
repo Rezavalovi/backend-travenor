@@ -80,7 +80,11 @@ class DestinationController {
           if (!data) {
               throw { name: "NotFound" }
           }
-          res.status(200).json(data)
+
+          res.status(200).json({
+            message: "Destination Succes updated",
+            data
+          });
       } catch (error) {
           console.log(error.message);
           next(error);

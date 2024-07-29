@@ -97,7 +97,7 @@ class UserController {
           message: "Invalid email/password",
         };
       }
-      const access_token = signToken({ email: user.email });
+      const access_token = signToken({ id: user.id, email: user.email });
 
       res.status(200).json({ access_token, id: user.id });
     } catch (error) {
